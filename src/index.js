@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Global, ThemeProvider } from '@emotion/react';
+
+import { GlobalStyles } from 'components/GlobalStyle/GlobalStyle';
+import { Normalize } from 'components/GlobalStyle/Normalize';
 import { App } from 'components/App';
-import reportWebVitals from './reportWebVitals';
-import './index.css';
+import { theme } from 'constants/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Global styles={Normalize} />
+    <Global styles={GlobalStyles} />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
